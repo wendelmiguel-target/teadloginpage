@@ -30,6 +30,12 @@ class _LoginWidgetState extends State<LoginWidget> {
             curve: Curves.fastOutSlowIn,
             width: selected ? 350 : 200,
             height: selected ? 300 : 80,
+            padding: const EdgeInsets.only(
+              top: 10,
+              left: 20,
+              right: 20,
+              bottom: 10,
+            ),
             decoration: BoxDecoration(
                 color: Colors.red, borderRadius: BorderRadius.circular(10)),
             child: selected
