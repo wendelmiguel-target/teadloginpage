@@ -10,9 +10,11 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormWidgetState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool isVisible = true;
+  bool isVisible = false;
 
   final ButtonStyle _loginButtonStyle = ElevatedButton.styleFrom(
+    minimumSize: const Size(300, 50),
+    padding: const EdgeInsets.all(16),
     foregroundColor: Colors.white,
     backgroundColor: const Color.fromARGB(255, 201, 27, 15),
     shape: RoundedRectangleBorder(
@@ -20,8 +22,18 @@ class _LoginFormWidgetState extends State<LoginForm> {
     ),
   );
 
+  Future<void> loginButtonAnimatedOpacityFutureDelayed() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (mounted) {
+      setState(() {
+        isVisible = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    loginButtonAnimatedOpacityFutureDelayed();
     return Form(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
@@ -69,7 +81,7 @@ class _LoginFormWidgetState extends State<LoginForm> {
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: AnimatedOpacity(
-          duration: const Duration(seconds: 10),
+          duration: const Duration(seconds: 2),
           opacity: isVisible ? 1.0 : 0.0,
           curve: Curves.fastOutSlowIn,
           child: ElevatedButton(
@@ -86,9 +98,6 @@ class _LoginFormWidgetState extends State<LoginForm> {
           onEnd: () {
             setState(() {
               if (!isVisible) {
-                if (kDebugMode) {
-                  print('esta passando');
-                }
                 isVisible = false;
               }
             });
