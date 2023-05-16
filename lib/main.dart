@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'login_page.dart';
+import 'main_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,8 +11,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LoginPage(),
-    );
+    return const MaterialApp(home: MainPage());
   }
 }

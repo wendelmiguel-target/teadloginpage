@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -37,46 +36,18 @@ class _LoginFormWidgetState extends State<LoginForm> {
     return Form(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
-      TextFormField(
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          border: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: Color.fromARGB(255, 160, 0, 0)),
-              borderRadius: BorderRadius.circular(20)),
-          icon: const Icon(Icons.alternate_email),
-          hintText: 'Insira seu email',
+      const Padding(
+        padding: EdgeInsets.only(bottom: 15),
+        child: Text(
+          "ENTRAR",
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
         ),
-        validator: (String? value) {
-          if (value == null) {
-            return 'Please enter some text';
-          }
-          return null;
-        },
       ),
+      emailTextFormField(),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: TextFormField(
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: Color.fromARGB(255, 160, 0, 0)),
-                borderRadius: BorderRadius.circular(20)),
-            icon: const Icon(Icons.password),
-            hintText: 'Senha',
-          ),
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: true,
-          validator: (String? value) {
-            if (value == null) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
-        ),
+        child: passTextFormField(),
       ),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -93,7 +64,7 @@ class _LoginFormWidgetState extends State<LoginForm> {
               }
             },
             style: _loginButtonStyle,
-            child: const Text('Login'),
+            child: const Text('LOGIN'),
           ),
           onEnd: () {
             setState(() {
@@ -105,5 +76,47 @@ class _LoginFormWidgetState extends State<LoginForm> {
         ),
       )
     ]));
+  }
+
+  TextFormField passTextFormField() {
+    return TextFormField(
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color.fromARGB(255, 160, 0, 0)),
+            borderRadius: BorderRadius.circular(20)),
+        icon: const Icon(Icons.password),
+        hintText: 'Senha',
+      ),
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: true,
+      validator: (String? value) {
+        if (value == null) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
+    );
+  }
+
+  TextFormField emailTextFormField() {
+    return TextFormField(
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color.fromARGB(255, 160, 0, 0)),
+            borderRadius: BorderRadius.circular(20)),
+        icon: const Icon(Icons.alternate_email),
+        hintText: 'Insira seu email',
+      ),
+      validator: (String? value) {
+        if (value == null) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
+    );
   }
 }
