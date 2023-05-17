@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'main_page.dart';
+import 'telas/main_screen.dart';
 
 void main() {
   runApp(const MainApp());
